@@ -1,0 +1,103 @@
+---
+interface Props {
+  id: string;
+  artist: string;
+  tour?: string;
+  dateDisplay: string;
+  image: string;
+  status: 'on-sale' | 'coming-soon' | 'sold-out' | 'past';
+  ticketOne?: string | null;
+  ticketZeta?: string | null;
+  featured?: boolean;
+}
+
+const { id, artist, tour, dateDisplay, image, status, ticketOne, ticketZeta, featured = false } = Astro.props;
+
+const statusLabels = {
+  'on-sale': 'In Vendita',
+  'coming-soon': 'Coming Soon',
+  'sold-out': 'Sold Out',
+  'past': 'Evento Passato'
+};
+
+const statusColors = {
+  'on-sale': 'bg-arena-red text-white',
+  'coming-soon': 'bg-amber-500 text-black',
+  'sold-out': 'bg-white/10 text-white/50',
+  'past': 'bg-white/5 text-white/30'
+};
+---
+
+<article class={`group relative overflow-hidden ${featured ? 'md:col-span-2 md:row-span-2' : ''}`}>
+  <!-- Image Container -->
+  <div class={`relative overflow-hidden ${featured ? 'aspect-[16/9] md:aspect-[21/9]' : 'aspect-[4/5]'}`}>
+    <img
+      src={image}
+      alt={artist}
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      loading="lazy"
+    />
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-arena-black via-arena-black/50 to-transparent"></div>
+
+    <!-- Red Glow Effect on Hover -->
+    <div class="absolute inset-0 bg-arena-red/0 group-hover:bg-arena-red/10 transition-colors duration-500"></div>
+
+    <!-- Status Badge -->
+    <div class="absolute top-4 left-4">
+      <span class={`px-3 py-1.5 text-xs uppercase tracking-wider font-medium ${statusColors[status]}`}>
+        {statusLabels[status]}
+      </span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="absolute bottom-0 left-0 right-0 p-6">
+    <!-- Date -->
+    <div class="flex items-center gap-2 mb-3">
+      <div class="w-8 h-px bg-arena-red"></div>
+      <span class="text-arena-red text-sm font-medium tracking-wider uppercase">{dateDisplay}</span>
+    </div>
+
+    <!-- Artist Name -->
+    <h3 class={`font-display tracking-wide text-white mb-1 ${featured ? 'text-4xl md:text-6xl' : 'text-2xl md:text-3xl'}`}>
+      {artist}
+    </h3>
+
+    <!-- Tour Name -->
+    {tour && (
+      <p class={`text-white/60 mb-4 ${featured ? 'text-lg' : 'text-sm'}`}>{tour}</p>
+    )}
+
+    <!-- Action Buttons -->
+    {(status === 'on-sale' || status === 'coming-soon') && (
+      <div class="flex flex-wrap gap-3 mt-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+        {ticketOne && (
+          <a
+            href={ticketOne}
+            target="_blank"
+            rel="noopener"
+            class="px-4 py-2 bg-arena-red hover:bg-arena-red-glow text-white text-sm font-medium tracking-wider uppercase transition-colors"
+          >
+            TicketOne
+          </a>
+        )}
+        {ticketZeta && (
+          <a
+            href={ticketZeta}
+            target="_blank"
+            rel="noopener"
+            class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium tracking-wider uppercase transition-colors"
+          >
+            TicketZeta
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+
+  <!-- Decorative Corner -->
+  <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+    <div class="absolute top-0 right-0 w-32 h-1 bg-arena-red transform rotate-45 origin-top-right translate-x-8 -translate-y-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </div>
+</article>

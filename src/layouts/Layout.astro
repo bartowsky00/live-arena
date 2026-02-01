@@ -1,0 +1,261 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Live Arena Agrigento - Il palcoscenico dei grandi eventi e concerti in Sicilia" } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+    <title>{title} | Live Arena Agrigento</title>
+
+    <style is:global>
+      :root {
+        --arena-black: #0a0a0a;
+        --arena-dark: #111111;
+        --arena-gray: #1a1a1a;
+        --arena-red: #DC2626;
+        --arena-red-dark: #7F1D1D;
+        --arena-red-glow: #EF4444;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'DM Sans', system-ui, sans-serif;
+        background-color: var(--arena-black);
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+
+      .font-display {
+        font-family: 'Bebas Neue', Impact, sans-serif;
+      }
+
+      /* Grain overlay */
+      .grain::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.03;
+        z-index: 9999;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--arena-black);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--arena-red-dark);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--arena-red);
+      }
+
+      /* Selection */
+      ::selection {
+        background: var(--arena-red);
+        color: white;
+      }
+
+      /* Animations on scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-delay-1 { transition-delay: 0.1s; }
+      .reveal-delay-2 { transition-delay: 0.2s; }
+      .reveal-delay-3 { transition-delay: 0.3s; }
+      .reveal-delay-4 { transition-delay: 0.4s; }
+    </style>
+  </head>
+  <body class="grain">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <a href="/" class="group flex items-center gap-2">
+            <div class="relative">
+              <span class="font-display text-3xl md:text-4xl tracking-wider text-white group-hover:text-arena-red transition-colors duration-300">LIVE</span>
+              <span class="font-display text-3xl md:text-4xl tracking-wider text-arena-red">ARENA</span>
+              <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-arena-red to-transparent"></div>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center gap-8">
+            <a href="/" class={`text-sm uppercase tracking-widest transition-colors duration-300 ${currentPath === '/' ? 'text-arena-red' : 'text-white/70 hover:text-white'}`}>Home</a>
+            <a href="/eventi" class={`text-sm uppercase tracking-widest transition-colors duration-300 ${currentPath === '/eventi' || currentPath === '/eventi/' ? 'text-arena-red' : 'text-white/70 hover:text-white'}`}>Eventi</a>
+            <a href="/venue" class={`text-sm uppercase tracking-widest transition-colors duration-300 ${currentPath === '/venue' || currentPath === '/venue/' ? 'text-arena-red' : 'text-white/70 hover:text-white'}`}>La Venue</a>
+            <a href="/contatti" class={`text-sm uppercase tracking-widest transition-colors duration-300 ${currentPath === '/contatti' || currentPath === '/contatti/' ? 'text-arena-red' : 'text-white/70 hover:text-white'}`}>Contatti</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-white p-2" id="mobile-menu-btn" aria-label="Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden fixed inset-0 bg-arena-black/98 z-40" id="mobile-menu">
+        <div class="flex flex-col items-center justify-center h-full gap-8">
+          <a href="/" class="font-display text-4xl tracking-wider text-white hover:text-arena-red transition-colors">HOME</a>
+          <a href="/eventi" class="font-display text-4xl tracking-wider text-white hover:text-arena-red transition-colors">EVENTI</a>
+          <a href="/venue" class="font-display text-4xl tracking-wider text-white hover:text-arena-red transition-colors">LA VENUE</a>
+          <a href="/contatti" class="font-display text-4xl tracking-wider text-white hover:text-arena-red transition-colors">CONTATTI</a>
+          <button class="mt-8 text-white/50" id="mobile-menu-close">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-arena-dark border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-4 gap-12">
+          <!-- Brand -->
+          <div class="md:col-span-2">
+            <div class="mb-6">
+              <span class="font-display text-4xl tracking-wider text-white">LIVE</span>
+              <span class="font-display text-4xl tracking-wider text-arena-red">ARENA</span>
+            </div>
+            <p class="text-white/50 max-w-md leading-relaxed">
+              Il palcoscenico dei grandi eventi ad Agrigento. Concerti, spettacoli e notti indimenticabili nella splendida cornice della Valle dei Templi.
+            </p>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h4 class="font-display text-xl tracking-wider mb-6 text-white">NAVIGAZIONE</h4>
+            <ul class="space-y-3">
+              <li><a href="/" class="text-white/50 hover:text-arena-red transition-colors">Home</a></li>
+              <li><a href="/eventi" class="text-white/50 hover:text-arena-red transition-colors">Eventi</a></li>
+              <li><a href="/venue" class="text-white/50 hover:text-arena-red transition-colors">La Venue</a></li>
+              <li><a href="/contatti" class="text-white/50 hover:text-arena-red transition-colors">Contatti</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="font-display text-xl tracking-wider mb-6 text-white">CONTATTI</h4>
+            <ul class="space-y-3 text-white/50">
+              <li>Via Esa Chimento</li>
+              <li>92100 Agrigento AG</li>
+              <li class="pt-4">
+                <div class="flex gap-4">
+                  <a href="https://instagram.com/sportvillage_bellavia" target="_blank" rel="noopener" class="hover:text-arena-red transition-colors" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  </a>
+                  <a href="https://facebook.com/sportvillage.bellavia" target="_blank" rel="noopener" class="hover:text-arena-red transition-colors" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-white/30 text-sm">© 2025 Live Arena - Sport Village Bellavia. Tutti i diritti riservati.</p>
+          <p class="text-white/30 text-sm">P.IVA 03017160841</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar background on scroll
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar?.classList.add('bg-arena-black/95', 'backdrop-blur-md', 'shadow-lg', 'shadow-black/20');
+        } else {
+          navbar?.classList.remove('bg-arena-black/95', 'backdrop-blur-md', 'shadow-lg', 'shadow-black/20');
+        }
+      });
+
+      // Mobile menu
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+      mobileMenuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+
+      mobileMenuClose?.addEventListener('click', () => {
+        mobileMenu?.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+
+      // Reveal on scroll
+      const reveals = document.querySelectorAll('.reveal');
+      const revealOnScroll = () => {
+        reveals.forEach(el => {
+          const elementTop = el.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (elementTop < windowHeight - 100) {
+            el.classList.add('visible');
+          }
+        });
+      };
+
+      window.addEventListener('scroll', revealOnScroll);
+      window.addEventListener('load', revealOnScroll);
+    </script>
+  </body>
+</html>

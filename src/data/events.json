@@ -1,0 +1,162 @@
+{
+  "events": [
+    {
+      "id": "claudio-baglioni-2026",
+      "artist": "Claudio Baglioni",
+      "tour": "La Vita è Adesso Grand Tour",
+      "date": "2026-07-26",
+      "dateEnd": "2026-07-27",
+      "dateDisplay": "26-27 Luglio 2026",
+      "image": "/images/event-crowd.jpg",
+      "description": "Una delle voci più amate della musica italiana torna alla Live Arena per due serate imperdibili.",
+      "status": "coming-soon",
+      "ticketOne": "https://www.ticketone.it",
+      "ticketZeta": "https://www.ticketzeta.it",
+      "prices": [
+        { "type": "Prato", "price": 55 },
+        { "type": "Tribuna Numerata", "price": 75 },
+        { "type": "Tribuna Gold", "price": 99 }
+      ]
+    },
+    {
+      "id": "fiorella-mannoia-2025",
+      "artist": "Fiorella Mannoia",
+      "tour": "Personale Tour",
+      "date": "2025-08-29",
+      "dateDisplay": "29 Agosto 2025",
+      "image": "/images/concert-1.jpg",
+      "description": "La regina della musica italiana torna per la XX edizione del Festival.",
+      "status": "on-sale",
+      "ticketOne": "https://www.ticketone.it",
+      "ticketZeta": "https://www.ticketzeta.it",
+      "prices": [
+        { "type": "Prato", "price": 45 },
+        { "type": "Tribuna Numerata", "price": 65 },
+        { "type": "Tribuna Gold", "price": 85 }
+      ]
+    },
+    {
+      "id": "antonello-venditti-2025",
+      "artist": "Antonello Venditti",
+      "tour": "Notte Prima degli Esami Tour",
+      "date": "2025-08-26",
+      "dateDisplay": "26 Agosto 2025",
+      "image": "/images/concert-2.jpg",
+      "description": "L'icona della musica romana porta i suoi più grandi successi alla Live Arena.",
+      "status": "on-sale",
+      "ticketOne": "https://www.ticketone.it",
+      "ticketZeta": "https://www.ticketzeta.it",
+      "prices": [
+        { "type": "Prato", "price": 45 },
+        { "type": "Tribuna Numerata", "price": 60 },
+        { "type": "Tribuna Gold", "price": 80 }
+      ]
+    },
+    {
+      "id": "umberto-tozzi-2025",
+      "artist": "Umberto Tozzi",
+      "tour": "L'Ultima Notte Rosa Final Tour",
+      "date": "2025-08-24",
+      "dateDisplay": "24 Agosto 2025",
+      "image": "/images/concert-3.jpg",
+      "description": "Il tour d'addio di una leggenda della musica italiana. Un evento unico e irripetibile.",
+      "status": "on-sale",
+      "ticketOne": "https://www.ticketone.it",
+      "ticketZeta": "https://www.ticketzeta.it",
+      "prices": [
+        { "type": "Prato", "price": 50 },
+        { "type": "Tribuna Numerata", "price": 70 },
+        { "type": "Tribuna Gold", "price": 90 }
+      ]
+    },
+    {
+      "id": "fabri-fibra-2025",
+      "artist": "Fabri Fibra",
+      "tour": "Caos Live Tour",
+      "date": "2025-08-20",
+      "dateDisplay": "20 Agosto 2025",
+      "image": "/images/event-crowd.jpg",
+      "description": "Il re del rap italiano infiamma l'estate agrigentina con i suoi più grandi successi.",
+      "status": "on-sale",
+      "ticketOne": "https://www.ticketone.it",
+      "ticketZeta": "https://www.ticketzeta.it",
+      "prices": [
+        { "type": "Prato", "price": 39 },
+        { "type": "Prato Gold", "price": 49 },
+        { "type": "Tribuna", "price": 59 }
+      ]
+    },
+    {
+      "id": "brunori-sas-2025",
+      "artist": "Brunori SAS",
+      "tour": "L'Albero delle Noci Tour",
+      "date": "2025-08-11",
+      "dateDisplay": "11 Agosto 2025",
+      "image": "/images/concert-1.jpg",
+      "description": "Il cantautore calabrese porta il suo poetico universo musicale alla Live Arena.",
+      "status": "on-sale",
+      "ticketOne": "https://www.ticketone.it",
+      "ticketZeta": "https://www.ticketzeta.it",
+      "prices": [
+        { "type": "Prato", "price": 40 },
+        { "type": "Tribuna Numerata", "price": 55 },
+        { "type": "Tribuna Gold", "price": 75 }
+      ]
+    },
+    {
+      "id": "nino-dangelo-2025",
+      "artist": "Nino D'Angelo",
+      "tour": "I Miei Meravigliosi Anni '80",
+      "date": "2025-08-01",
+      "dateDisplay": "1 Agosto 2025",
+      "image": "/images/concert-2.jpg",
+      "description": "Un viaggio nella musica napoletana e nei successi degli anni '80.",
+      "status": "on-sale",
+      "ticketOne": "https://www.ticketone.it",
+      "ticketZeta": "https://www.ticketzeta.it",
+      "prices": [
+        { "type": "Prato", "price": 35 },
+        { "type": "Tribuna", "price": 50 }
+      ]
+    },
+    {
+      "id": "tony-effe-2024",
+      "artist": "Tony Effe",
+      "tour": "Icon Tour",
+      "date": "2024-08-07",
+      "dateDisplay": "7 Agosto 2024",
+      "image": "/images/concert-3.jpg",
+      "description": "Il fenomeno trap ha fatto scatenare migliaia di fan alla Live Arena.",
+      "status": "past",
+      "ticketOne": null,
+      "ticketZeta": null,
+      "prices": []
+    },
+    {
+      "id": "teenage-dream-2024",
+      "artist": "Teenage Dream",
+      "tour": "Summer Party",
+      "date": "2024-08-22",
+      "dateDisplay": "22 Agosto 2024",
+      "image": "/images/event-crowd.jpg",
+      "description": "La festa dell'estate che ha fatto ballare Agrigento.",
+      "status": "past",
+      "ticketOne": null,
+      "ticketZeta": null,
+      "prices": []
+    },
+    {
+      "id": "alfa-2024",
+      "artist": "Alfa",
+      "tour": "Non So Chi Ha Creato il Mondo Tour",
+      "date": "2024-08-23",
+      "dateDisplay": "23 Agosto 2024",
+      "image": "/images/concert-1.jpg",
+      "description": "Il giovane talento genovese ha conquistato il pubblico della Live Arena.",
+      "status": "past",
+      "ticketOne": null,
+      "ticketZeta": null,
+      "prices": []
+    }
+  ]
+}
