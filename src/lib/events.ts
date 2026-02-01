@@ -35,11 +35,20 @@ function convertLocalEvent(event: typeof eventsData.events[0]): Event {
   };
 }
 
-// Aggiunge dateDisplay formattata agli eventi
+// Verifica se un evento è passato
+function isEventPast(event: Event): boolean {
+  const eventDate = new Date(event.dateEnd || event.date);
+  const today = new Date();
+  return eventDate < today;
+}
+
+// Aggiunge dateDisplay formattata e corregge lo status
 function addDateDisplay(events: Event[]): (Event & { dateDisplay: string })[] {
   return events.map(event => ({
     ...event,
     dateDisplay: formatDate(event.date, event.dateEnd),
+    // Se l'evento è passato, forza lo status a 'past'
+    status: isEventPast(event) ? 'past' : event.status,
   }));
 }
 
@@ -61,43 +70,51 @@ export async function getAllEvents(): Promise<(Event & { dateDisplay: string })[
   return addDateDisplay(events);
 }
 
-// Ottiene gli eventi futuri
+// Ottiene gli eventi futuri (basandosi sulla data, non sullo status)
 export async function getUpcoming(): Promise<(Event & { dateDisplay: string })[]> {
+  const today = new Date();
+
   if (isSanityConfigured) {
     try {
       const events = await getUpcomingEvents();
       if (events.length > 0) {
-        return addDateDisplay(events);
+        // Filtra per data, non per status
+        const futureEvents = events.filter(e => new Date(e.dateEnd || e.date) >= today);
+        return addDateDisplay(futureEvents);
       }
     } catch (error) {
       console.warn('Errore Sanity, uso dati locali:', error);
     }
   }
 
-  // Fallback ai dati locali
+  // Fallback ai dati locali - filtra per data
   const events = eventsData.events
-    .filter(e => e.status !== 'past')
+    .filter(e => new Date(e.dateEnd || e.date) >= today)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .map(convertLocalEvent);
   return addDateDisplay(events);
 }
 
-// Ottiene gli eventi passati
+// Ottiene gli eventi passati (basandosi sulla data, non sullo status)
 export async function getPast(): Promise<(Event & { dateDisplay: string })[]> {
+  const today = new Date();
+
   if (isSanityConfigured) {
     try {
-      const events = await getPastEvents();
-      if (events.length > 0) {
-        return addDateDisplay(events);
+      const allEvents = await getEvents();
+      if (allEvents.length > 0) {
+        // Filtra per data, non per status
+        const pastEvents = allEvents.filter(e => new Date(e.dateEnd || e.date) < today);
+        return addDateDisplay(pastEvents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()));
       }
     } catch (error) {
       console.warn('Errore Sanity, uso dati locali:', error);
     }
   }
 
-  // Fallback ai dati locali
+  // Fallback ai dati locali - filtra per data
   const events = eventsData.events
-    .filter(e => e.status === 'past')
+    .filter(e => new Date(e.dateEnd || e.date) < today)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .map(convertLocalEvent);
   return addDateDisplay(events);

@@ -12,6 +12,11 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 
+// Verifica se l'evento è passato (basandosi sulla data)
+const eventDate = new Date(event.dateEnd || event.date);
+const today = new Date();
+const isPastEvent = eventDate < today || event.status === 'past';
+
 const statusLabels = {
   'on-sale': 'In Vendita',
   'coming-soon': 'Coming Soon',
@@ -53,8 +58,8 @@ const statusColors = {
 
       <!-- Status Badge -->
       <div class="mb-4">
-        <span class={`inline-block px-4 py-2 text-sm uppercase tracking-wider font-medium text-white ${statusColors[event.status]}`}>
-          {statusLabels[event.status]}
+        <span class={`inline-block px-4 py-2 text-sm uppercase tracking-wider font-medium text-white ${isPastEvent ? 'bg-white/20' : statusColors[event.status]}`}>
+          {isPastEvent ? 'Evento Passato' : statusLabels[event.status]}
         </span>
       </div>
 
@@ -126,10 +131,23 @@ const statusColors = {
           <div class="sticky top-24 p-8 bg-arena-gray border border-white/5">
             <h3 class="font-display text-2xl tracking-wider text-white mb-6">BIGLIETTI</h3>
 
-            {event.status === 'past' ? (
-              <p class="text-white/50">Questo evento si è già svolto.</p>
+            {isPastEvent ? (
+              <div class="text-center">
+                <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-8 h-8 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <p class="text-white/50">Questo evento si è già svolto.</p>
+                <a href="/eventi" class="inline-block mt-4 text-arena-red hover:text-arena-red-glow text-sm">
+                  Scopri i prossimi eventi →
+                </a>
+              </div>
             ) : event.status === 'sold-out' ? (
-              <p class="text-arena-red font-medium">Evento sold out!</p>
+              <div class="text-center">
+                <p class="text-arena-red font-medium text-lg mb-2">Sold Out!</p>
+                <p class="text-white/50 text-sm">I biglietti per questo evento sono esauriti.</p>
+              </div>
             ) : (
               <>
                 {/* Prices */}
