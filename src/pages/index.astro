@@ -109,14 +109,12 @@ const upcomingEvents = allUpcoming.slice(0, 4);
         {upcomingEvents.map((event, index) => (
           <div class={`reveal reveal-delay-${index + 1}`}>
             <EventCard
-              id={event.id}
+              id={event.slug}
               artist={event.artist}
               tour={event.tour}
               dateDisplay={event.dateDisplay}
               image={event.image}
               status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
-              ticketOne={event.ticketOne}
-              ticketZeta={event.ticketZeta}
               featured={index === 0}
             />
           </div>

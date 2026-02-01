@@ -60,14 +60,12 @@ const pastEvents = await getPast();
           {upcomingEvents.map((event, index) => (
             <div class="reveal" style={`animation-delay: ${index * 0.1}s`}>
               <EventCard
-                id={event.id}
+                id={event.slug}
                 artist={event.artist}
                 tour={event.tour}
                 dateDisplay={event.dateDisplay}
                 image={event.image}
                 status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
-                ticketOne={event.ticketOne}
-                ticketZeta={event.ticketZeta}
               />
             </div>
           ))}
@@ -88,14 +86,12 @@ const pastEvents = await getPast();
         {pastEvents.map((event, index) => (
           <div class="reveal opacity-60 hover:opacity-100 transition-opacity" style={`animation-delay: ${index * 0.05}s`}>
             <EventCard
-              id={event.id}
+              id={event.slug}
               artist={event.artist}
               tour={event.tour}
               dateDisplay={event.dateDisplay}
               image={event.image}
               status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
-              ticketOne={event.ticketOne}
-              ticketZeta={event.ticketZeta}
             />
           </div>
         ))}
