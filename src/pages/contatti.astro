@@ -330,22 +330,62 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
-  const form = document.getElementById('contact-form');
+  const form = document.getElementById('contact-form') as HTMLFormElement;
   const successMessage = document.getElementById('success-message');
+  const errorMessage = document.createElement('div');
+  errorMessage.id = 'error-message';
+  errorMessage.className = 'hidden mt-8 p-6 bg-red-900/20 border border-red-500/30';
+  errorMessage.innerHTML = `
+    <div class="flex items-center gap-3 text-red-400">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+      <span class="font-medium">Errore durante l'invio</span>
+    </div>
+    <p class="text-red-400/70 mt-2">Riprova più tardi o contattaci sui social.</p>
+  `;
+  form?.parentNode?.insertBefore(errorMessage, successMessage?.nextSibling || null);
 
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Simulate form submission
-    const submitBtn = form.querySelector('button[type="submit"]');
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalText = submitBtn?.innerHTML;
+
     if (submitBtn) {
       submitBtn.innerHTML = '<span>Invio in corso...</span>';
-      submitBtn.setAttribute('disabled', 'true');
+      submitBtn.disabled = true;
     }
 
-    setTimeout(() => {
-      form.classList.add('hidden');
-      successMessage?.classList.remove('hidden');
-    }, 1500);
+    errorMessage.classList.add('hidden');
+
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message')
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        form.classList.add('hidden');
+        successMessage?.classList.remove('hidden');
+      } else {
+        throw new Error('Errore invio');
+      }
+    } catch (error) {
+      errorMessage.classList.remove('hidden');
+      if (submitBtn) {
+        submitBtn.innerHTML = originalText || 'Invia Messaggio';
+        submitBtn.disabled = false;
+      }
+    }
   });
 </script>
