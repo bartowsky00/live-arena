@@ -203,14 +203,47 @@ const currentPath = Astro.url.pathname;
           </div>
         </div>
 
+        <!-- Legal Links -->
+        <div class="mt-12 pt-8 border-t border-white/5">
+          <div class="flex flex-wrap justify-center gap-6 text-sm">
+            <a href="/privacy" class="text-white/40 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/cookie-policy" class="text-white/40 hover:text-white transition-colors">Cookie Policy</a>
+            <a href="/termini" class="text-white/40 hover:text-white transition-colors">Termini e Condizioni</a>
+          </div>
+        </div>
+
         <!-- Bottom -->
-        <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p class="text-white/30 text-sm">© 2025 Live Arena - Fondazione Teatro Valle dei Templi. Tutti i diritti riservati.</p>
           <p class="text-white/30 text-sm">P.IVA 03009420849</p>
           <p class="text-white/30 text-sm">Realizzato da <a href="https://astramotive.it" target="_blank" rel="noopener" class="text-arena-red hover:text-arena-red-glow transition-colors">Astramotive.it</a></p>
         </div>
       </div>
     </footer>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[200] transform translate-y-full transition-transform duration-500">
+      <div class="bg-arena-dark border-t border-white/10 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-6 py-6">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex-1">
+              <p class="text-white/80 text-sm leading-relaxed">
+                Utilizziamo i cookie per migliorare la tua esperienza sul nostro sito. Continuando a navigare, accetti l'utilizzo dei cookie.
+                <a href="/cookie-policy" class="text-arena-red hover:text-arena-red-glow underline">Scopri di più</a>
+              </p>
+            </div>
+            <div class="flex gap-4">
+              <button id="cookie-reject" class="px-6 py-2.5 text-sm font-medium text-white/70 hover:text-white border border-white/20 hover:border-white/40 transition-colors">
+                Rifiuta
+              </button>
+              <button id="cookie-accept" class="px-6 py-2.5 text-sm font-medium text-white bg-arena-red hover:bg-arena-red-glow transition-colors">
+                Accetta
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script>
       // Navbar background on scroll
@@ -252,6 +285,35 @@ const currentPath = Astro.url.pathname;
 
       window.addEventListener('scroll', revealOnScroll);
       window.addEventListener('load', revealOnScroll);
+
+      // Cookie Banner
+      const cookieBanner = document.getElementById('cookie-banner');
+      const cookieAccept = document.getElementById('cookie-accept');
+      const cookieReject = document.getElementById('cookie-reject');
+
+      // Check if consent already given
+      const cookieConsent = localStorage.getItem('cookie_consent');
+
+      if (!cookieConsent) {
+        // Show banner after a short delay
+        setTimeout(() => {
+          cookieBanner?.classList.remove('translate-y-full');
+        }, 1000);
+      }
+
+      function hideBanner() {
+        cookieBanner?.classList.add('translate-y-full');
+      }
+
+      cookieAccept?.addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'accepted');
+        hideBanner();
+      });
+
+      cookieReject?.addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'rejected');
+        hideBanner();
+      });
     </script>
   </body>
 </html>
