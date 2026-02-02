@@ -121,7 +121,11 @@ export async function getEvent(slug: string): Promise<Event | null> {
       status,
       ticketOne,
       ticketZeta,
-      prices
+      prices,
+      "gallery": gallery[]{
+        "url": asset->url,
+        "caption": caption
+      }
     }
   `, { slug });
 }
@@ -161,4 +165,5 @@ export interface Event {
   ticketZeta?: string;
   prices?: { type: string; price: number }[];
   featured?: boolean;
+  gallery?: { url: string; caption?: string }[];
 }
