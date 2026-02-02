@@ -105,7 +105,7 @@ const upcomingEvents = allUpcoming.slice(0, 4);
       </div>
 
       <!-- Events Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {upcomingEvents.map((event, index) => (
           <div class={`reveal reveal-delay-${index + 1}`}>
             <EventCard
@@ -115,7 +115,6 @@ const upcomingEvents = allUpcoming.slice(0, 4);
               dateDisplay={event.dateDisplay}
               image={event.image}
               status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
-              featured={index === 0}
             />
           </div>
         ))}
