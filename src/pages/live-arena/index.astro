@@ -7,7 +7,7 @@ const upcomingEvents = await getUpcomingByVenue('live-arena');
 const displayEvents = upcomingEvents.slice(0, 3);
 ---
 
-<Layout title="Live Arena" description="Live Arena - Il palcoscenico all'aperto per i grandi concerti ad Agrigento. 5000+ posti nella splendida cornice della Valle dei Templi.">
+<Layout title="Live Arena" description="Live Arena - Il palcoscenico all'aperto per i grandi concerti ad Agrigento. 4000+ posti a pochi chilometri dalla Valle dei Templi.">
   <!-- Hero Section -->
   <section class="relative min-h-[80vh] flex items-end overflow-hidden">
     <!-- Background Image -->
@@ -36,7 +36,8 @@ const displayEvents = upcomingEvents.slice(0, 3);
       <!-- Badge -->
       <div class="flex items-center gap-3 mb-6">
         <span class="px-4 py-2 text-sm uppercase tracking-wider font-medium bg-arena-red text-white">All'aperto</span>
-        <span class="px-4 py-2 text-sm uppercase tracking-wider font-medium bg-white/10 text-white">5000+ posti</span>
+        <span class="px-4 py-2 text-sm uppercase tracking-wider font-medium bg-white/10 text-white">4000+ posti</span>
+        <span class="px-4 py-2 text-sm uppercase tracking-wider font-medium bg-white/10 text-white">Dal 2024</span>
       </div>
 
       <!-- Title -->
@@ -47,7 +48,7 @@ const displayEvents = upcomingEvents.slice(0, 3);
 
       <!-- Subtitle -->
       <p class="text-xl md:text-2xl text-white/70 max-w-2xl mb-8">
-        Il palcoscenico all'aperto dei grandi eventi, immerso nella splendida cornice della Piana Chimento ad Agrigento.
+        Il palcoscenico all'aperto dei grandi eventi estivi, a pochi chilometri dalla Valle dei Templi.
       </p>
 
       <!-- CTA -->
@@ -74,30 +75,29 @@ const displayEvents = upcomingEvents.slice(0, 3);
             UN PALCO<br />
             <span class="text-arena-red">UNICO</span>
           </h2>
-          <p class="reveal reveal-delay-2 text-white/60 text-lg leading-relaxed mb-8">
-            Situata nel cuore della Piana Chimento ad Agrigento, la Live Arena è il palcoscenico all'aperto
-            dello Sport Village Bellavia. Una location esclusiva che unisce la magia della musica live
-            all'atmosfera unica della Sicilia, a pochi passi dalla Valle dei Templi.
+          <p class="reveal reveal-delay-2 text-white/60 text-lg leading-relaxed mb-6">
+            La <strong class="text-white">Live Arena</strong> nasce nel 2024 con l'obiettivo di creare ad Agrigento una venue che si avvicini al concetto di "stabilità" per gli eventi: pur essendo una struttura a montaggio stagionale, installata e rimossa ogni anno, è progettata per garantire continuità, comfort e standard organizzativi elevati in un contesto privato.
+          </p>
+          <p class="reveal reveal-delay-2 text-white/60 text-lg leading-relaxed mb-6">
+            La struttura è all'aperto e opera principalmente durante la stagione estiva. È concepita per ospitare eventi culturali di diversa natura, offrendo un'esperienza immersiva e un'organizzazione flessibile, con configurazioni che prevedono posti a sedere e posti in piedi in base alle esigenze dello spettacolo.
           </p>
           <p class="reveal reveal-delay-2 text-white/60 text-lg leading-relaxed mb-8">
-            Con una capienza di oltre 5000 posti, la Live Arena ospita i più grandi artisti nazionali
-            e internazionali durante la stagione estiva, offrendo un'esperienza indimenticabile sotto
-            le stelle siciliane.
+            Situata a pochi chilometri dalla <strong class="text-white">Valle dei Templi</strong>, la Live Arena è adiacente allo <strong class="text-white">Sport Village Bellavia</strong> e si inserisce in un'area già punto di riferimento per lo sport e il tempo libero sul territorio.
           </p>
 
           <!-- Stats -->
           <div class="reveal reveal-delay-3 grid grid-cols-3 gap-8 mb-10">
             <div>
-              <span class="font-display text-4xl md:text-5xl text-arena-red">5000+</span>
+              <span class="font-display text-4xl md:text-5xl text-arena-red">4000+</span>
               <p class="text-white/50 text-sm mt-1">Posti</p>
             </div>
             <div>
-              <span class="font-display text-4xl md:text-5xl text-arena-red">20+</span>
+              <span class="font-display text-4xl md:text-5xl text-arena-red">10+</span>
               <p class="text-white/50 text-sm mt-1">Eventi/Anno</p>
             </div>
             <div>
-              <span class="font-display text-4xl md:text-5xl text-arena-red">100%</span>
-              <p class="text-white/50 text-sm mt-1">All'aperto</p>
+              <span class="font-display text-4xl md:text-5xl text-arena-red">2024</span>
+              <p class="text-white/50 text-sm mt-1">Anno Apertura</p>
             </div>
           </div>
         </div>
@@ -111,8 +111,8 @@ const displayEvents = upcomingEvents.slice(0, 3);
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <h4 class="font-display text-lg tracking-wider text-white mb-2">ALL'APERTO</h4>
-              <p class="text-white/50 text-sm">Concerti sotto le stelle nella magica atmosfera siciliana</p>
+              <h4 class="font-display text-lg tracking-wider text-white mb-2">STAGIONALE</h4>
+              <p class="text-white/50 text-sm">Struttura a montaggio stagionale con standard elevati</p>
             </div>
 
             <div class="p-6 bg-arena-gray border border-white/5">
@@ -128,11 +128,11 @@ const displayEvents = upcomingEvents.slice(0, 3);
             <div class="p-6 bg-arena-gray border border-white/5">
               <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
                 <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
                 </svg>
               </div>
-              <h4 class="font-display text-lg tracking-wider text-white mb-2">ACUSTICA</h4>
-              <p class="text-white/50 text-sm">Sistema audio professionale per un suono perfetto</p>
+              <h4 class="font-display text-lg tracking-wider text-white mb-2">FLESSIBILE</h4>
+              <p class="text-white/50 text-sm">Configurazioni con posti a sedere o in piedi</p>
             </div>
 
             <div class="p-6 bg-arena-gray border border-white/5">
