@@ -132,21 +132,21 @@ const displayEvents = upcomingEvents.slice(0, 3);
           </div>
         </div>
 
-        <!-- Image Gallery -->
+        <!-- Image Gallery Preview -->
         <div class="reveal reveal-delay-2 grid grid-cols-2 gap-4">
-          <div class="aspect-[3/4] relative overflow-hidden">
+          <div class="aspect-[3/4] relative overflow-hidden group">
             <img
-              src="/images/palaforum-interior-1.jpg"
+              src="/images/palaforum-gallery/IMG_5283.jpg"
               alt="Palaforum interno"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div class="absolute inset-0 border border-violet-500/20"></div>
           </div>
-          <div class="aspect-[3/4] relative overflow-hidden mt-8">
+          <div class="aspect-[3/4] relative overflow-hidden mt-8 group">
             <img
-              src="/images/palaforum-interior-2.jpg"
+              src="/images/palaforum-gallery/IMG_5300.jpg"
               alt="Palaforum interno"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div class="absolute inset-0 border border-violet-500/20"></div>
           </div>
@@ -210,9 +210,84 @@ const displayEvents = upcomingEvents.slice(0, 3);
     </div>
   </section>
 
+  <!-- Gallery Section -->
+  <section class="py-24 md:py-32 bg-arena-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="reveal text-violet-400 text-sm tracking-[0.3em] uppercase mb-4 block">Immagini</span>
+        <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl tracking-wider text-white">
+          GALLERIA
+        </h2>
+      </div>
+
+      <div class="reveal reveal-delay-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/IMG_5283.jpg" alt="Palaforum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/IMG_5300.jpg" alt="Palaforum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/IMG_5302.jpg" alt="Palaforum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/IMG_5298.jpg" alt="Palaforum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/IMG_3001.jpg" alt="Palaforum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/IMG_5259.jpg" alt="Palaforum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/IMG_5273.jpg" alt="Palaforum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/IMG_5305.jpg" alt="Palaforum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/E.B.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-200662.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-201346.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-208615.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-208616.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-208618.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-208621.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-208624.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-208626.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-208628.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-208629.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+        <div class="aspect-square overflow-hidden group">
+          <img src="/images/palaforum-gallery/reepyk-209887.jpg" alt="Palaforum evento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Upcoming Events Section -->
   {displayEvents.length > 0 && (
-    <section class="py-24 md:py-32 bg-arena-black">
+    <section class="py-24 md:py-32 bg-arena-dark">
       <div class="max-w-7xl mx-auto px-6">
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">

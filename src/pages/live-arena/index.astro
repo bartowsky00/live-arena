@@ -200,6 +200,92 @@ const displayEvents = upcomingEvents.slice(0, 3);
     </div>
   </section>
 
+  <!-- Video Reel Section -->
+  <section class="py-24 md:py-32 bg-arena-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="reveal text-arena-red text-sm tracking-[0.3em] uppercase mb-4 block">Momenti</span>
+        <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl tracking-wider text-white">
+          LIVE <span class="text-arena-red">MOMENTS</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/60 text-lg max-w-2xl mx-auto mt-6">
+          I momenti più emozionanti dalla Live Arena
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-2 grid md:grid-cols-2 gap-8">
+        <!-- Video 1 - Fiorella Mannoia -->
+        <div class="bg-arena-gray border border-white/5 overflow-hidden">
+          <div class="aspect-[9/16] md:aspect-video relative">
+            <video
+              src="/videos/live-arena-reel/fiorella-mannoia-finale.mp4"
+              class="w-full h-full object-cover"
+              controls
+              preload="metadata"
+              poster=""
+            ></video>
+          </div>
+          <div class="p-6">
+            <p class="text-white/70 text-sm leading-relaxed">
+              Un finale da brividi. La voce inconfondibile di Fiorella Mannoia ha illuminato la Live Arena.
+            </p>
+          </div>
+        </div>
+
+        <!-- Video 2 - Coro -->
+        <div class="bg-arena-gray border border-white/5 overflow-hidden">
+          <div class="aspect-[9/16] md:aspect-video relative">
+            <video
+              src="/videos/live-arena-reel/coro-live-arena.mp4"
+              class="w-full h-full object-cover"
+              controls
+              preload="metadata"
+            ></video>
+          </div>
+          <div class="p-6">
+            <p class="text-white/70 text-sm leading-relaxed">
+              Una voce che ha unito generazioni. La Live Arena si è trasformata in un coro vibrante.
+            </p>
+          </div>
+        </div>
+
+        <!-- Video 3 - Antonello Venditti -->
+        <div class="bg-arena-gray border border-white/5 overflow-hidden">
+          <div class="aspect-[9/16] md:aspect-video relative">
+            <video
+              src="/videos/live-arena-reel/antonello-venditti.mp4"
+              class="w-full h-full object-cover"
+              controls
+              preload="metadata"
+            ></video>
+          </div>
+          <div class="p-6">
+            <p class="text-white/70 text-sm leading-relaxed">
+              Grazie Antonello ❤️
+            </p>
+          </div>
+        </div>
+
+        <!-- Video 4 - Estate 2024 -->
+        <div class="bg-arena-gray border border-white/5 overflow-hidden">
+          <div class="aspect-[9/16] md:aspect-video relative">
+            <video
+              src="/videos/live-arena-reel/estate-2024.mp4"
+              class="w-full h-full object-cover"
+              controls
+              preload="metadata"
+            ></video>
+          </div>
+          <div class="p-6">
+            <p class="text-white/70 text-sm leading-relaxed">
+              Oggi è il 31 di agosto. Un'estate che muore, una storia che nasce. E noi l'abbiamo vissuta live.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Upcoming Events Section -->
   {displayEvents.length > 0 && (
     <section class="py-24 md:py-32 bg-arena-dark">
