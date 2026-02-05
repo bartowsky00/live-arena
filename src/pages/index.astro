@@ -38,34 +38,34 @@ const upcomingEvents = allUpcoming.slice(0, 4);
       </div>
 
       <!-- Main Title -->
-      <h1 class="font-display text-6xl sm:text-8xl md:text-9xl tracking-wider mb-6 animate-fade-up" style="animation-delay: 0.2s;">
-        <span class="text-white">LIVE</span>
+      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-wider mb-6 animate-fade-up" style="animation-delay: 0.2s;">
+        <span class="text-white">FONDAZIONE TEATRO</span><br />
         <span class="text-arena-red relative">
-          ARENA
+          VALLE DEI TEMPLI
           <span class="absolute -inset-4 bg-arena-red/20 blur-3xl -z-10 animate-glow-pulse"></span>
         </span>
       </h1>
 
       <!-- Subtitle -->
       <p class="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto mb-12 animate-fade-up" style="animation-delay: 0.4s;">
-        Il palcoscenico dei grandi eventi.<br class="hidden md:block" />
-        Concerti indimenticabili nella terra degli Dei.
+        Due palcoscenici unici nella terra degli Dei.<br class="hidden md:block" />
+        Concerti e spettacoli indimenticabili ad Agrigento.
       </p>
 
       <!-- CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style="animation-delay: 0.6s;">
         <a
-          href="/eventi"
+          href="#venues"
           class="group relative px-8 py-4 bg-arena-red hover:bg-arena-red-glow text-white font-medium tracking-wider uppercase transition-all duration-300 overflow-hidden"
         >
-          <span class="relative z-10">Scopri gli Eventi</span>
+          <span class="relative z-10">Scopri le Venue</span>
           <div class="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
         </a>
         <a
-          href="/venue"
+          href="#eventi"
           class="px-8 py-4 border border-white/20 hover:border-arena-red text-white font-medium tracking-wider uppercase transition-colors duration-300"
         >
-          La Venue
+          Prossimi Eventi
         </a>
       </div>
     </div>
@@ -78,8 +78,96 @@ const upcomingEvents = allUpcoming.slice(0, 4);
     </div>
   </section>
 
+  <!-- Venues Section -->
+  <section id="venues" class="py-24 md:py-32 bg-arena-dark relative overflow-hidden">
+    <!-- Background Decoration -->
+    <div class="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-arena-red/5 to-transparent pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="reveal text-arena-red text-sm tracking-[0.3em] uppercase mb-4 block">Le Nostre</span>
+        <h2 class="reveal reveal-delay-1 font-display text-5xl md:text-7xl tracking-wider text-white">
+          VENUE
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/60 text-lg max-w-2xl mx-auto mt-6">
+          Due location straordinarie per ogni tipo di evento: dalla musica live al teatro, dai congressi alle fiere.
+        </p>
+      </div>
+
+      <!-- Venue Cards -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Live Arena Card -->
+        <a href="/live-arena" class="reveal reveal-delay-1 group relative overflow-hidden block">
+          <div class="aspect-[4/3] relative">
+            <img
+              src="/images/concert-3.jpg"
+              alt="Live Arena"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-arena-black via-arena-black/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-arena-red/0 group-hover:bg-arena-red/20 transition-colors duration-500"></div>
+
+            <!-- Content -->
+            <div class="absolute bottom-0 left-0 right-0 p-8">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1.5 text-xs uppercase tracking-wider font-medium bg-arena-red text-white">All'aperto</span>
+                <span class="px-3 py-1.5 text-xs uppercase tracking-wider font-medium bg-white/10 text-white">5000+ posti</span>
+              </div>
+              <h3 class="font-display text-4xl md:text-5xl tracking-wider text-white mb-3">
+                LIVE ARENA
+              </h3>
+              <p class="text-white/60 mb-4 max-w-md">
+                Il palcoscenico all'aperto per i grandi concerti estivi, immerso nella splendida cornice della Piana Chimento.
+              </p>
+              <div class="flex items-center gap-2 text-arena-red group-hover:text-arena-red-glow transition-colors">
+                <span class="tracking-wider uppercase font-medium text-sm">Scopri Live Arena</span>
+                <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Palaforum Card -->
+        <a href="/palaforum" class="reveal reveal-delay-2 group relative overflow-hidden block">
+          <div class="aspect-[4/3] relative">
+            <img
+              src="/images/palaforum-interior-1.jpg"
+              alt="Palaforum Giuseppe Bellavia"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-arena-black via-arena-black/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-violet-600/0 group-hover:bg-violet-600/20 transition-colors duration-500"></div>
+
+            <!-- Content -->
+            <div class="absolute bottom-0 left-0 right-0 p-8">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1.5 text-xs uppercase tracking-wider font-medium bg-violet-600 text-white">Al coperto</span>
+                <span class="px-3 py-1.5 text-xs uppercase tracking-wider font-medium bg-white/10 text-white">Tutto l'anno</span>
+              </div>
+              <h3 class="font-display text-4xl md:text-5xl tracking-wider text-white mb-3">
+                PALAFORUM
+              </h3>
+              <p class="text-white/60 mb-4 max-w-md">
+                Un vero gioiello per chi ama arte e spettacolo. Acustica eccellente, attrezzature professionali e massimo comfort.
+              </p>
+              <div class="flex items-center gap-2 text-violet-400 group-hover:text-violet-300 transition-colors">
+                <span class="tracking-wider uppercase font-medium text-sm">Scopri Palaforum</span>
+                <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Upcoming Events Section -->
-  <section class="py-24 md:py-32 bg-arena-black relative">
+  <section id="eventi" class="py-24 md:py-32 bg-arena-black relative">
     <!-- Background Decoration -->
     <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-arena-red/5 to-transparent pointer-events-none"></div>
 
@@ -93,117 +181,64 @@ const upcomingEvents = allUpcoming.slice(0, 4);
             <span class="text-arena-red">EVENTI</span>
           </h2>
         </div>
-        <a
-          href="/eventi"
-          class="reveal reveal-delay-1 group flex items-center gap-3 text-white/70 hover:text-arena-red transition-colors"
-        >
-          <span class="tracking-wider uppercase text-sm">Tutti gli eventi</span>
-          <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </a>
-      </div>
-
-      <!-- Events Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {upcomingEvents.map((event, index) => (
-          <div class={`reveal reveal-delay-${index + 1}`}>
-            <EventCard
-              id={event.slug}
-              artist={event.artist}
-              tour={event.tour}
-              dateDisplay={event.dateDisplay}
-              image={event.image}
-              status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Venue Preview Section -->
-  <section class="py-24 md:py-32 bg-arena-dark relative overflow-hidden">
-    <!-- Background Image -->
-    <div class="absolute inset-0">
-      <img
-        src="/images/concert-3.jpg"
-        alt="Live Arena Venue"
-        class="w-full h-full object-cover opacity-20"
-      />
-      <div class="absolute inset-0 bg-gradient-to-r from-arena-dark via-arena-dark/95 to-arena-dark/80"></div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 relative">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Text Content -->
-        <div>
-          <span class="reveal text-arena-red text-sm tracking-[0.3em] uppercase mb-4 block">La Location</span>
-          <h2 class="reveal reveal-delay-1 font-display text-5xl md:text-7xl tracking-wider text-white mb-8">
-            UN PALCO<br />
-            <span class="text-arena-red">UNICO</span>
-          </h2>
-          <p class="reveal reveal-delay-2 text-white/60 text-lg leading-relaxed mb-8">
-            Situata nel cuore della Piana Chimento ad Agrigento, la Live Arena è il palcoscenico all'aperto
-            dello Sport Village Bellavia. Una location esclusiva che unisce la magia della musica live
-            all'atmosfera unica della Sicilia, a pochi passi dalla Valle dei Templi.
-          </p>
-          <div class="reveal reveal-delay-3 grid grid-cols-3 gap-8 mb-10">
-            <div>
-              <span class="font-display text-4xl text-arena-red">5000+</span>
-              <p class="text-white/50 text-sm mt-1">Posti</p>
-            </div>
-            <div>
-              <span class="font-display text-4xl text-arena-red">20+</span>
-              <p class="text-white/50 text-sm mt-1">Eventi/Anno</p>
-            </div>
-            <div>
-              <span class="font-display text-4xl text-arena-red">100%</span>
-              <p class="text-white/50 text-sm mt-1">All'aperto</p>
-            </div>
-          </div>
+        <div class="reveal reveal-delay-1 flex flex-col sm:flex-row gap-4">
           <a
-            href="/venue"
-            class="reveal reveal-delay-4 inline-flex items-center gap-3 text-arena-red hover:text-arena-red-glow transition-colors group"
+            href="/live-arena/eventi"
+            class="group flex items-center gap-3 text-white/70 hover:text-arena-red transition-colors"
           >
-            <span class="tracking-wider uppercase font-medium">Scopri la venue</span>
+            <span class="tracking-wider uppercase text-sm">Eventi Live Arena</span>
+            <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+          <a
+            href="/palaforum/eventi"
+            class="group flex items-center gap-3 text-white/70 hover:text-violet-400 transition-colors"
+          >
+            <span class="tracking-wider uppercase text-sm">Eventi Palaforum</span>
             <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </a>
         </div>
-
-        <!-- Visual Element -->
-        <div class="reveal relative">
-          <div class="aspect-square relative">
-            <!-- Decorative Frame -->
-            <div class="absolute inset-8 border border-arena-red/30"></div>
-            <div class="absolute inset-4 border border-white/10"></div>
-
-            <!-- Image -->
-            <img
-              src="/images/concert-2.jpg"
-              alt="Live Arena Stage"
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-
-            <!-- Glow Effect -->
-            <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-arena-red/30 blur-3xl"></div>
-          </div>
-        </div>
       </div>
+
+      <!-- Events Grid -->
+      {upcomingEvents.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {upcomingEvents.map((event, index) => (
+            <div class={`reveal reveal-delay-${index + 1}`}>
+              <EventCard
+                id={event.slug}
+                artist={event.artist}
+                tour={event.tour}
+                dateDisplay={event.dateDisplay}
+                image={event.image}
+                status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
+                venue={event.venue}
+                showVenueBadge={true}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <p class="text-white/50 text-lg">Nessun evento in programma al momento.</p>
+          <p class="text-white/30 mt-2">Torna presto per scoprire i prossimi concerti!</p>
+        </div>
+      )}
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-24 md:py-32 bg-arena-black relative">
+  <section class="py-24 md:py-32 bg-arena-dark relative">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="reveal font-display text-4xl md:text-6xl tracking-wider text-white mb-6">
         PRONTO PER<br />
         <span class="text-arena-red">L'ESPERIENZA?</span>
       </h2>
       <p class="reveal reveal-delay-1 text-white/60 text-lg mb-10 max-w-2xl mx-auto">
-        Non perdere i prossimi eventi alla Live Arena. Iscriviti alla newsletter per rimanere aggiornato
+        Non perdere i prossimi eventi della Fondazione Teatro Valle dei Templi. Iscriviti alla newsletter per rimanere aggiornato
         su concerti, date e promozioni esclusive.
       </p>
 

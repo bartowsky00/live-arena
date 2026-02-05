@@ -30,6 +30,18 @@ const statusColors = {
   'sold-out': 'bg-arena-red',
   'past': 'bg-white/20'
 };
+
+// Venue info
+const venue = event.venue || {
+  name: 'Live Arena',
+  slug: 'live-arena',
+  shortName: 'live-arena',
+  address: 'Via Esa Chimento, 92100 Agrigento AG',
+  isIndoor: false
+};
+
+const venuePageUrl = venue.shortName === 'palaforum' ? '/palaforum' : '/live-arena';
+const venueColor = venue.shortName === 'palaforum' ? 'violet' : 'arena-red';
 ---
 
 <Layout title={event.artist} description={event.description}>
@@ -49,24 +61,32 @@ const statusColors = {
     <!-- Content -->
     <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 w-full">
       <!-- Back Link -->
-      <a href="/eventi" class="inline-flex items-center gap-2 text-white/60 hover:text-white mb-8 transition-colors">
+      <a href={`${venuePageUrl}/eventi`} class="inline-flex items-center gap-2 text-white/60 hover:text-white mb-8 transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
-        <span>Tutti gli eventi</span>
+        <span>Eventi {venue.name}</span>
       </a>
 
-      <!-- Status Badge -->
-      <div class="mb-4">
+      <!-- Badges -->
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <!-- Status Badge -->
         <span class={`inline-block px-4 py-2 text-sm uppercase tracking-wider font-medium text-white ${isPastEvent ? 'bg-white/20' : statusColors[event.status]}`}>
           {isPastEvent ? 'Evento Passato' : statusLabels[event.status]}
         </span>
+        <!-- Venue Badge -->
+        <a
+          href={venuePageUrl}
+          class={`inline-block px-4 py-2 text-sm uppercase tracking-wider font-medium text-white ${venue.shortName === 'palaforum' ? 'bg-violet-600 hover:bg-violet-500' : 'bg-arena-red hover:bg-arena-red-glow'} transition-colors`}
+        >
+          {venue.name}
+        </a>
       </div>
 
       <!-- Date -->
       <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-px bg-arena-red"></div>
-        <span class="text-arena-red text-xl font-medium tracking-wider uppercase">{event.dateDisplay}</span>
+        <div class={`w-12 h-px ${venue.shortName === 'palaforum' ? 'bg-violet-400' : 'bg-arena-red'}`}></div>
+        <span class={`${venue.shortName === 'palaforum' ? 'text-violet-400' : 'text-arena-red'} text-xl font-medium tracking-wider uppercase`}>{event.dateDisplay}</span>
       </div>
 
       <!-- Artist Name -->
@@ -96,8 +116,8 @@ const statusColors = {
           <div class="grid sm:grid-cols-2 gap-6 mt-12">
             <div class="p-6 bg-arena-gray border border-white/5">
               <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center">
-                  <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class={`w-12 h-12 ${venue.shortName === 'palaforum' ? 'bg-violet-600/10' : 'bg-arena-red/10'} flex items-center justify-center`}>
+                  <svg class={`w-6 h-6 ${venue.shortName === 'palaforum' ? 'text-violet-400' : 'text-arena-red'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                   </svg>
                 </div>
@@ -110,17 +130,55 @@ const statusColors = {
 
             <div class="p-6 bg-arena-gray border border-white/5">
               <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center">
-                  <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class={`w-12 h-12 ${venue.shortName === 'palaforum' ? 'bg-violet-600/10' : 'bg-arena-red/10'} flex items-center justify-center`}>
+                  <svg class={`w-6 h-6 ${venue.shortName === 'palaforum' ? 'text-violet-400' : 'text-arena-red'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                   </svg>
                 </div>
                 <div>
                   <p class="text-white/50 text-sm uppercase tracking-wider">Location</p>
-                  <p class="text-white font-medium">Live Arena</p>
-                  <p class="text-white/50 text-sm">Via Platone 3, Agrigento</p>
+                  <a href={venuePageUrl} class={`text-white font-medium hover:${venue.shortName === 'palaforum' ? 'text-violet-400' : 'text-arena-red'} transition-colors`}>
+                    {venue.name}
+                  </a>
+                  <p class="text-white/50 text-sm">{venue.address}</p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Venue Info Card -->
+          <div class={`mt-8 p-6 border ${venue.shortName === 'palaforum' ? 'border-violet-500/20 bg-violet-600/5' : 'border-arena-red/20 bg-arena-red/5'}`}>
+            <div class="flex items-start gap-4">
+              <div class={`w-12 h-12 ${venue.shortName === 'palaforum' ? 'bg-violet-600/20' : 'bg-arena-red/20'} flex items-center justify-center flex-shrink-0`}>
+                {venue.isIndoor ? (
+                  <svg class={`w-6 h-6 ${venue.shortName === 'palaforum' ? 'text-violet-400' : 'text-arena-red'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                  </svg>
+                ) : (
+                  <svg class={`w-6 h-6 ${venue.shortName === 'palaforum' ? 'text-violet-400' : 'text-arena-red'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                )}
+              </div>
+              <div class="flex-1">
+                <h4 class="font-display text-lg tracking-wider text-white mb-2">
+                  {venue.name}
+                </h4>
+                <p class="text-white/60 text-sm mb-3">
+                  {venue.isIndoor
+                    ? 'Struttura al coperto con climatizzazione. Eventi tutto l\'anno.'
+                    : 'Location all\'aperto. Eventi durante la stagione estiva.'}
+                </p>
+                <a
+                  href={venuePageUrl}
+                  class={`inline-flex items-center gap-2 text-sm ${venue.shortName === 'palaforum' ? 'text-violet-400 hover:text-violet-300' : 'text-arena-red hover:text-arena-red-glow'} transition-colors`}
+                >
+                  <span>Scopri la venue</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
@@ -139,7 +197,7 @@ const statusColors = {
                   </svg>
                 </div>
                 <p class="text-white/50">Questo evento si è già svolto.</p>
-                <a href="/eventi" class="inline-block mt-4 text-arena-red hover:text-arena-red-glow text-sm">
+                <a href={`${venuePageUrl}/eventi`} class={`inline-block mt-4 ${venue.shortName === 'palaforum' ? 'text-violet-400 hover:text-violet-300' : 'text-arena-red hover:text-arena-red-glow'} text-sm`}>
                   Scopri i prossimi eventi →
                 </a>
               </div>
@@ -172,7 +230,7 @@ const statusColors = {
                       href={event.ticketOne}
                       target="_blank"
                       rel="noopener"
-                      class="block w-full py-4 bg-arena-red hover:bg-arena-red-glow text-white text-center font-medium tracking-wider uppercase transition-colors"
+                      class={`block w-full py-4 ${venue.shortName === 'palaforum' ? 'bg-violet-600 hover:bg-violet-500' : 'bg-arena-red hover:bg-arena-red-glow'} text-white text-center font-medium tracking-wider uppercase transition-colors`}
                     >
                       Acquista su TicketOne
                     </a>
@@ -255,38 +313,49 @@ const statusColors = {
   </div>
 
   <!-- Map Section -->
-  <section class="py-16 bg-arena-dark">
+  <section class="py-16 bg-arena-black">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="font-display text-3xl tracking-wider text-white mb-8">COME ARRIVARE</h2>
       <div class="aspect-[21/9] bg-arena-gray relative overflow-hidden">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.8!2d13.57!3d37.31!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia+Platone+3%2C+92100+Agrigento+AG!5e0!3m2!1sit!2sit!4v1"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.8!2d13.57!3d37.31!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia+Esa+Chimento%2C+92100+Agrigento+AG!5e0!3m2!1sit!2sit!4v1"
           width="100%"
           height="100%"
           style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);"
           allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Mappa Live Arena"
+          title={`Mappa ${venue.name}`}
         ></iframe>
-        <div class="absolute inset-0 border border-arena-red/20 pointer-events-none"></div>
+        <div class={`absolute inset-0 border ${venue.shortName === 'palaforum' ? 'border-violet-500/20' : 'border-arena-red/20'} pointer-events-none`}></div>
       </div>
     </div>
   </section>
 
   <!-- Other Events -->
-  <section class="py-16 md:py-24 bg-arena-black">
+  <section class="py-16 md:py-24 bg-arena-dark">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="font-display text-3xl tracking-wider text-white mb-8">ALTRI EVENTI</h2>
-      <a
-        href="/eventi"
-        class="inline-flex items-center gap-3 text-arena-red hover:text-arena-red-glow transition-colors group"
-      >
-        <span class="tracking-wider uppercase font-medium">Scopri tutti gli eventi</span>
-        <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-        </svg>
-      </a>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={`${venuePageUrl}/eventi`}
+          class={`inline-flex items-center gap-3 ${venue.shortName === 'palaforum' ? 'text-violet-400 hover:text-violet-300' : 'text-arena-red hover:text-arena-red-glow'} transition-colors group`}
+        >
+          <span class="tracking-wider uppercase font-medium">Eventi {venue.name}</span>
+          <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+        <a
+          href="/"
+          class="inline-flex items-center gap-3 text-white/70 hover:text-white transition-colors group"
+        >
+          <span class="tracking-wider uppercase font-medium">Tutti gli eventi</span>
+          <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 </Layout>

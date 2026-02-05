@@ -1,4 +1,6 @@
 ---
+import type { VenueRef } from '../lib/sanity';
+
 interface Props {
   id: string;
   artist: string;
@@ -7,9 +9,11 @@ interface Props {
   image: string;
   status: 'on-sale' | 'coming-soon' | 'sold-out' | 'past';
   featured?: boolean;
+  venue?: VenueRef;
+  showVenueBadge?: boolean;
 }
 
-const { id, artist, tour, dateDisplay, image, status, featured = false } = Astro.props;
+const { id, artist, tour, dateDisplay, image, status, featured = false, venue, showVenueBadge = true } = Astro.props;
 
 const statusLabels = {
   'on-sale': 'In Vendita',
@@ -24,6 +28,16 @@ const statusColors = {
   'sold-out': 'bg-white/10 text-white/50',
   'past': 'bg-white/5 text-white/30'
 };
+
+// Venue badge colors
+const venueBadgeColors = {
+  'live-arena': 'bg-arena-red/80 text-white',
+  'palaforum': 'bg-violet-600/80 text-white'
+};
+
+const venueShortName = venue?.shortName || 'live-arena';
+const venueBadgeColor = venueBadgeColors[venueShortName as keyof typeof venueBadgeColors] || venueBadgeColors['live-arena'];
+const venueDisplayName = venue?.name || 'Live Arena';
 ---
 
 <a href={`/eventi/${id}`} class={`block group relative overflow-hidden ${featured ? 'md:col-span-2 md:row-span-2' : ''}`}>
@@ -41,11 +55,19 @@ const statusColors = {
     <!-- Red Glow Effect on Hover -->
     <div class="absolute inset-0 bg-arena-red/0 group-hover:bg-arena-red/10 transition-colors duration-500"></div>
 
-    <!-- Status Badge -->
-    <div class="absolute top-4 left-4">
+    <!-- Badges Container -->
+    <div class="absolute top-4 left-4 flex flex-col gap-2">
+      <!-- Status Badge -->
       <span class={`px-3 py-1.5 text-xs uppercase tracking-wider font-medium ${statusColors[status]}`}>
         {statusLabels[status]}
       </span>
+
+      <!-- Venue Badge -->
+      {showVenueBadge && venue && (
+        <span class={`px-3 py-1.5 text-xs uppercase tracking-wider font-medium ${venueBadgeColor}`}>
+          {venueDisplayName === 'Live Arena' ? 'Live Arena' : 'Palaforum'}
+        </span>
+      )}
     </div>
   </div>
 

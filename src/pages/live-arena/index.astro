@@ -1,0 +1,282 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EventCard from '../../components/EventCard.astro';
+import { getUpcomingByVenue } from '../../lib/events';
+
+const upcomingEvents = await getUpcomingByVenue('live-arena');
+const displayEvents = upcomingEvents.slice(0, 3);
+---
+
+<Layout title="Live Arena" description="Live Arena - Il palcoscenico all'aperto per i grandi concerti ad Agrigento. 5000+ posti nella splendida cornice della Valle dei Templi.">
+  <!-- Hero Section -->
+  <section class="relative min-h-[80vh] flex items-end overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src="/images/concert-3.jpg"
+        alt="Live Arena"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-arena-black via-arena-black/70 to-arena-black/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-arena-black/60 to-transparent"></div>
+      <!-- Red Glow -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-arena-red/20 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
+      <!-- Back Link -->
+      <a href="/" class="inline-flex items-center gap-2 text-white/60 hover:text-white mb-8 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Home</span>
+      </a>
+
+      <!-- Badge -->
+      <div class="flex items-center gap-3 mb-6">
+        <span class="px-4 py-2 text-sm uppercase tracking-wider font-medium bg-arena-red text-white">All'aperto</span>
+        <span class="px-4 py-2 text-sm uppercase tracking-wider font-medium bg-white/10 text-white">5000+ posti</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="font-display text-6xl sm:text-8xl md:text-9xl tracking-wider text-white mb-6">
+        <span class="text-white">LIVE</span>
+        <span class="text-arena-red"> ARENA</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-xl md:text-2xl text-white/70 max-w-2xl mb-8">
+        Il palcoscenico all'aperto dei grandi eventi, immerso nella splendida cornice della Piana Chimento ad Agrigento.
+      </p>
+
+      <!-- CTA -->
+      <a
+        href="/live-arena/eventi"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-arena-red hover:bg-arena-red-glow text-white font-medium tracking-wider uppercase transition-colors"
+      >
+        <span>Vedi gli Eventi</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="py-24 md:py-32 bg-arena-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Text Content -->
+        <div>
+          <span class="reveal text-arena-red text-sm tracking-[0.3em] uppercase mb-4 block">La Location</span>
+          <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl tracking-wider text-white mb-8">
+            UN PALCO<br />
+            <span class="text-arena-red">UNICO</span>
+          </h2>
+          <p class="reveal reveal-delay-2 text-white/60 text-lg leading-relaxed mb-8">
+            Situata nel cuore della Piana Chimento ad Agrigento, la Live Arena è il palcoscenico all'aperto
+            dello Sport Village Bellavia. Una location esclusiva che unisce la magia della musica live
+            all'atmosfera unica della Sicilia, a pochi passi dalla Valle dei Templi.
+          </p>
+          <p class="reveal reveal-delay-2 text-white/60 text-lg leading-relaxed mb-8">
+            Con una capienza di oltre 5000 posti, la Live Arena ospita i più grandi artisti nazionali
+            e internazionali durante la stagione estiva, offrendo un'esperienza indimenticabile sotto
+            le stelle siciliane.
+          </p>
+
+          <!-- Stats -->
+          <div class="reveal reveal-delay-3 grid grid-cols-3 gap-8 mb-10">
+            <div>
+              <span class="font-display text-4xl md:text-5xl text-arena-red">5000+</span>
+              <p class="text-white/50 text-sm mt-1">Posti</p>
+            </div>
+            <div>
+              <span class="font-display text-4xl md:text-5xl text-arena-red">20+</span>
+              <p class="text-white/50 text-sm mt-1">Eventi/Anno</p>
+            </div>
+            <div>
+              <span class="font-display text-4xl md:text-5xl text-arena-red">100%</span>
+              <p class="text-white/50 text-sm mt-1">All'aperto</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div class="reveal reveal-delay-2">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-6 bg-arena-gray border border-white/5">
+              <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h4 class="font-display text-lg tracking-wider text-white mb-2">ALL'APERTO</h4>
+              <p class="text-white/50 text-sm">Concerti sotto le stelle nella magica atmosfera siciliana</p>
+            </div>
+
+            <div class="p-6 bg-arena-gray border border-white/5">
+              <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                </svg>
+              </div>
+              <h4 class="font-display text-lg tracking-wider text-white mb-2">PARCHEGGIO</h4>
+              <p class="text-white/50 text-sm">Ampio parcheggio gratuito per tutti gli spettatori</p>
+            </div>
+
+            <div class="p-6 bg-arena-gray border border-white/5">
+              <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                </svg>
+              </div>
+              <h4 class="font-display text-lg tracking-wider text-white mb-2">ACUSTICA</h4>
+              <p class="text-white/50 text-sm">Sistema audio professionale per un suono perfetto</p>
+            </div>
+
+            <div class="p-6 bg-arena-gray border border-white/5">
+              <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h4 class="font-display text-lg tracking-wider text-white mb-2">BAR & FOOD</h4>
+              <p class="text-white/50 text-sm">Punti ristoro con cibo e bevande durante gli eventi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events Section -->
+  {displayEvents.length > 0 && (
+    <section class="py-24 md:py-32 bg-arena-dark">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+          <div class="reveal">
+            <span class="text-arena-red text-sm tracking-[0.3em] uppercase mb-4 block">Prossimi</span>
+            <h2 class="font-display text-4xl md:text-6xl tracking-wider text-white">
+              EVENTI<br />
+              <span class="text-arena-red">LIVE ARENA</span>
+            </h2>
+          </div>
+          <a
+            href="/live-arena/eventi"
+            class="reveal reveal-delay-1 group flex items-center gap-3 text-white/70 hover:text-arena-red transition-colors"
+          >
+            <span class="tracking-wider uppercase text-sm">Tutti gli eventi</span>
+            <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {displayEvents.map((event, index) => (
+            <div class={`reveal reveal-delay-${index + 1}`}>
+              <EventCard
+                id={event.slug}
+                artist={event.artist}
+                tour={event.tour}
+                dateDisplay={event.dateDisplay}
+                image={event.image}
+                status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
+                venue={event.venue}
+                showVenueBadge={false}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Map Section -->
+  <section class="py-24 md:py-32 bg-arena-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <span class="text-arena-red text-sm tracking-[0.3em] uppercase mb-4 block">Dove Siamo</span>
+          <h2 class="font-display text-4xl md:text-6xl tracking-wider text-white mb-6">
+            COME<br />
+            <span class="text-arena-red">ARRIVARE</span>
+          </h2>
+          <div class="space-y-4 text-white/60">
+            <p class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-arena-red flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <span>
+                <strong class="text-white">Indirizzo:</strong><br />
+                Via Esa Chimento<br />
+                92100 Agrigento AG
+              </span>
+            </p>
+            <p class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-arena-red flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+              </svg>
+              <span>
+                <strong class="text-white">Parcheggio:</strong><br />
+                Ampio parcheggio gratuito disponibile per tutti gli eventi
+              </span>
+            </p>
+          </div>
+          <a
+            href="https://maps.google.com/?q=Via+Esa+Chimento,+92100+Agrigento+AG"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 mt-8 text-arena-red hover:text-arena-red-glow transition-colors"
+          >
+            <span class="tracking-wider uppercase font-medium">Apri in Google Maps</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Map -->
+        <div class="reveal reveal-delay-1 aspect-square lg:aspect-[4/3] bg-arena-gray relative overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.8!2d13.57!3d37.31!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia+Esa+Chimento%2C+92100+Agrigento+AG!5e0!3m2!1sit!2sit!4v1"
+            width="100%"
+            height="100%"
+            style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mappa Live Arena"
+          ></iframe>
+          <div class="absolute inset-0 border border-arena-red/20 pointer-events-none"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 md:py-32 bg-arena-dark">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="reveal font-display text-4xl md:text-6xl tracking-wider text-white mb-6">
+        SCOPRI ANCHE IL<br />
+        <span class="text-violet-400">PALAFORUM</span>
+      </h2>
+      <p class="reveal reveal-delay-1 text-white/60 text-lg mb-10 max-w-2xl mx-auto">
+        Per eventi al coperto tutto l'anno, scopri il Palaforum Giuseppe Bellavia: acustica eccellente, comfort e versatilità.
+      </p>
+      <a
+        href="/palaforum"
+        class="reveal reveal-delay-2 inline-flex items-center gap-3 px-8 py-4 bg-violet-600 hover:bg-violet-500 text-white font-medium tracking-wider uppercase transition-colors"
+      >
+        <span>Scopri il Palaforum</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</Layout>

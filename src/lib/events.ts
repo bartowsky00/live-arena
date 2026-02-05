@@ -1,4 +1,4 @@
-import { isSanityConfigured, getEvents, getUpcomingEvents, getPastEvents, type Event } from './sanity';
+import { isSanityConfigured, getEvents, getUpcomingEvents, getPastEvents, getEventsByVenue, type Event, type VenueRef } from './sanity';
 import eventsData from '../data/events.json';
 
 // Formatta la data per la visualizzazione
@@ -32,6 +32,14 @@ function convertLocalEvent(event: typeof eventsData.events[0]): Event {
     ticketOne: event.ticketOne || undefined,
     ticketZeta: event.ticketZeta || undefined,
     prices: event.prices,
+    // Default venue for local events (Live Arena)
+    venue: {
+      name: 'Live Arena',
+      slug: 'live-arena',
+      shortName: 'live-arena',
+      address: 'Via Esa Chimento, 92100 Agrigento AG',
+      isIndoor: false
+    }
   };
 }
 
@@ -118,4 +126,41 @@ export async function getPast(): Promise<(Event & { dateDisplay: string })[]> {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .map(convertLocalEvent);
   return addDateDisplay(events);
+}
+
+// Ottiene eventi per venue specifica
+export async function getEventsByVenueSlug(venueSlug: string): Promise<(Event & { dateDisplay: string })[]> {
+  if (isSanityConfigured) {
+    try {
+      const events = await getEventsByVenue(venueSlug);
+      if (events.length > 0) {
+        return addDateDisplay(events);
+      }
+    } catch (error) {
+      console.warn('Errore Sanity, uso dati locali:', error);
+    }
+  }
+
+  // Fallback ai dati locali - filtra per venueSlug (default live-arena)
+  const events = eventsData.events
+    .filter(e => venueSlug === 'live-arena') // Tutti i dati locali sono Live Arena
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .map(convertLocalEvent);
+  return addDateDisplay(events);
+}
+
+// Ottiene eventi futuri per venue specifica
+export async function getUpcomingByVenue(venueSlug: string): Promise<(Event & { dateDisplay: string })[]> {
+  const today = new Date();
+  const allVenueEvents = await getEventsByVenueSlug(venueSlug);
+  return allVenueEvents.filter(e => new Date(e.dateEnd || e.date) >= today);
+}
+
+// Ottiene eventi passati per venue specifica
+export async function getPastByVenue(venueSlug: string): Promise<(Event & { dateDisplay: string })[]> {
+  const today = new Date();
+  const allVenueEvents = await getEventsByVenueSlug(venueSlug);
+  return allVenueEvents
+    .filter(e => new Date(e.dateEnd || e.date) < today)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }

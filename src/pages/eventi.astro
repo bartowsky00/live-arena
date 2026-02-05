@@ -7,7 +7,7 @@ const upcomingEvents = await getUpcoming();
 const pastEvents = await getPast();
 ---
 
-<Layout title="Eventi" description="Scopri tutti gli eventi e concerti alla Live Arena di Agrigento. Acquista i biglietti per i prossimi spettacoli.">
+<Layout title="Eventi" description="Scopri tutti gli eventi e concerti della Fondazione Teatro Valle dei Templi. Acquista i biglietti per i prossimi spettacoli.">
   <!-- Hero Section -->
   <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
     <!-- Background -->
@@ -24,8 +24,17 @@ const pastEvents = await getPast();
           <span class="text-arena-red">EVENTI</span>
         </h1>
         <p class="text-white/60 text-lg max-w-2xl mx-auto animate-fade-up" style="animation-delay: 0.2s;">
-          I migliori artisti nazionali e internazionali sul palcoscenico della Live Arena.
+          I migliori artisti nazionali e internazionali sui palcoscenici della Fondazione Teatro Valle dei Templi.
         </p>
+        <!-- Venue Links -->
+        <div class="flex flex-wrap justify-center gap-4 mt-8 animate-fade-up" style="animation-delay: 0.3s;">
+          <a href="/live-arena/eventi" class="px-6 py-2 border border-arena-red/50 text-arena-red hover:bg-arena-red hover:text-white transition-colors text-sm uppercase tracking-wider">
+            Eventi Live Arena
+          </a>
+          <a href="/palaforum/eventi" class="px-6 py-2 border border-violet-500/50 text-violet-400 hover:bg-violet-600 hover:text-white transition-colors text-sm uppercase tracking-wider">
+            Eventi Palaforum
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -66,6 +75,8 @@ const pastEvents = await getPast();
                 dateDisplay={event.dateDisplay}
                 image={event.image}
                 status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
+                venue={event.venue}
+                showVenueBadge={true}
               />
             </div>
           ))}
@@ -82,20 +93,28 @@ const pastEvents = await getPast();
   <!-- Past Events -->
   <section class="py-16 md:py-24 bg-arena-dark hidden" id="past-events">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {pastEvents.map((event, index) => (
-          <div class="reveal opacity-60 hover:opacity-100 transition-opacity" style={`animation-delay: ${index * 0.05}s`}>
-            <EventCard
-              id={event.slug}
-              artist={event.artist}
-              tour={event.tour}
-              dateDisplay={event.dateDisplay}
-              image={event.image}
-              status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
-            />
-          </div>
-        ))}
-      </div>
+      {pastEvents.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {pastEvents.map((event, index) => (
+            <div class="reveal opacity-60 hover:opacity-100 transition-opacity" style={`animation-delay: ${index * 0.05}s`}>
+              <EventCard
+                id={event.slug}
+                artist={event.artist}
+                tour={event.tour}
+                dateDisplay={event.dateDisplay}
+                image={event.image}
+                status="past"
+                venue={event.venue}
+                showVenueBadge={true}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <p class="text-white/50 text-lg">Nessun evento passato.</p>
+        </div>
+      )}
     </div>
   </section>
 
@@ -122,9 +141,9 @@ const pastEvents = await getPast();
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
           </div>
-          <h3 class="font-display text-2xl tracking-wider text-white mb-3">COME ARRIVARE</h3>
+          <h3 class="font-display text-2xl tracking-wider text-white mb-3">DUE VENUE</h3>
           <p class="text-white/50">
-            Via Esa Chimento, Agrigento. Ampio parcheggio disponibile. Raggiungi facilmente la venue in auto o con i mezzi pubblici.
+            Live Arena all'aperto per l'estate, Palaforum al coperto tutto l'anno. Scopri le nostre location ad Agrigento.
           </p>
         </div>
 
