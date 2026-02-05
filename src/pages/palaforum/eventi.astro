@@ -72,6 +72,8 @@ const pastEvents = await getPastByVenue('palaforum');
                 status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
                 venue={event.venue}
                 showVenueBadge={false}
+                ticketOne={event.ticketOne}
+                ticketZeta={event.ticketZeta}
               />
             ))}
           </div>
@@ -102,6 +104,7 @@ const pastEvents = await getPastByVenue('palaforum');
                 status="past"
                 venue={event.venue}
                 showVenueBadge={false}
+                showTicketLinks={false}
               />
             ))}
           </div>

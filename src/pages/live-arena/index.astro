@@ -237,6 +237,8 @@ const displayEvents = upcomingEvents.slice(0, 3);
                 status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
                 venue={event.venue}
                 showVenueBadge={false}
+                ticketOne={event.ticketOne}
+                ticketZeta={event.ticketZeta}
               />
             </div>
           ))}

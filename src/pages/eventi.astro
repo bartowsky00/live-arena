@@ -77,6 +77,8 @@ const pastEvents = await getPast();
                 status={event.status as 'on-sale' | 'coming-soon' | 'sold-out' | 'past'}
                 venue={event.venue}
                 showVenueBadge={true}
+                ticketOne={event.ticketOne}
+                ticketZeta={event.ticketZeta}
               />
             </div>
           ))}
@@ -106,6 +108,7 @@ const pastEvents = await getPast();
                 status="past"
                 venue={event.venue}
                 showVenueBadge={true}
+                showTicketLinks={false}
               />
             </div>
           ))}
