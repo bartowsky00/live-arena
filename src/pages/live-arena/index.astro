@@ -102,49 +102,99 @@ const displayEvents = upcomingEvents.slice(0, 3);
           </div>
         </div>
 
-        <!-- Features -->
-        <div class="reveal reveal-delay-2">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="p-6 bg-arena-gray border border-white/5">
-              <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <h4 class="font-display text-lg tracking-wider text-white mb-2">STAGIONALE</h4>
-              <p class="text-white/50 text-sm">Struttura a montaggio stagionale con standard elevati</p>
-            </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="p-6 bg-arena-gray border border-white/5">
-              <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                </svg>
-              </div>
-              <h4 class="font-display text-lg tracking-wider text-white mb-2">PARCHEGGIO</h4>
-              <p class="text-white/50 text-sm">Ampio parcheggio gratuito per tutti gli spettatori</p>
-            </div>
+  <!-- Cosa Offriamo Section -->
+  <section class="py-24 md:py-32 bg-arena-dark">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="reveal text-arena-red text-sm tracking-[0.3em] uppercase mb-4 block">I Nostri Servizi</span>
+        <h2 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl tracking-wider text-white">
+          COSA <span class="text-arena-red">OFFRIAMO</span>
+        </h2>
+      </div>
 
-            <div class="p-6 bg-arena-gray border border-white/5">
-              <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-                </svg>
-              </div>
-              <h4 class="font-display text-lg tracking-wider text-white mb-2">FLESSIBILE</h4>
-              <p class="text-white/50 text-sm">Configurazioni con posti a sedere o in piedi</p>
-            </div>
-
-            <div class="p-6 bg-arena-gray border border-white/5">
-              <div class="w-12 h-12 bg-arena-red/10 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <h4 class="font-display text-lg tracking-wider text-white mb-2">BAR & FOOD</h4>
-              <p class="text-white/50 text-sm">Punti ristoro con cibo e bevande durante gli eventi</p>
-            </div>
+      <!-- Features Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Configurazione Flessibile -->
+        <div class="reveal p-8 bg-arena-gray border border-white/5 hover:border-arena-red/30 transition-colors">
+          <div class="w-14 h-14 bg-arena-red/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+            </svg>
           </div>
+          <h4 class="font-display text-xl tracking-wider text-white mb-3">CONFIGURAZIONE FLESSIBILE</h4>
+          <p class="text-white/50 text-sm leading-relaxed">
+            Posti a sedere e posti in piedi modulabili in base all'evento, con layout adattabili alle diverse tipologie di spettacolo e alle esigenze di pubblico e produzione, pensati per garantire buona visibilità e una fruizione ordinata.
+          </p>
+        </div>
+
+        <!-- Spazio Open-Air -->
+        <div class="reveal reveal-delay-1 p-8 bg-arena-gray border border-white/5 hover:border-arena-red/30 transition-colors">
+          <div class="w-14 h-14 bg-arena-red/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl tracking-wider text-white mb-3">SPAZIO OPEN-AIR</h4>
+          <p class="text-white/50 text-sm leading-relaxed">
+            Venue all'aperto progettata per la stagione estiva, con allestimenti studiati per offrire comfort e vivibilità durante gli eventi.
+          </p>
+        </div>
+
+        <!-- Food & Drink -->
+        <div class="reveal reveal-delay-2 p-8 bg-arena-gray border border-white/5 hover:border-arena-red/30 transition-colors">
+          <div class="w-14 h-14 bg-arena-red/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl tracking-wider text-white mb-3">FOOD & DRINK</h4>
+          <p class="text-white/50 text-sm leading-relaxed">
+            Bar, punti ristoro e area merchandising dedicata, per completare l'esperienza dell'evento.
+          </p>
+        </div>
+
+        <!-- Parcheggio -->
+        <div class="reveal p-8 bg-arena-gray border border-white/5 hover:border-arena-red/30 transition-colors">
+          <div class="w-14 h-14 bg-arena-red/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl tracking-wider text-white mb-3">PARCHEGGIO AMPIO</h4>
+          <p class="text-white/50 text-sm leading-relaxed">
+            Area parcheggio adiacente alla venue, pensata per agevolare l'accesso e la gestione dei flussi in entrata e in uscita.
+          </p>
+        </div>
+
+        <!-- Sicurezza -->
+        <div class="reveal reveal-delay-1 p-8 bg-arena-gray border border-white/5 hover:border-arena-red/30 transition-colors">
+          <div class="w-14 h-14 bg-arena-red/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl tracking-wider text-white mb-3">SICUREZZA</h4>
+          <p class="text-white/50 text-sm leading-relaxed">
+            Controllo accessi, gestione dei flussi e personale dedicato per garantire eventi organizzati, sicuri e accessibili.
+          </p>
+        </div>
+
+        <!-- Accessibilità -->
+        <div class="reveal reveal-delay-2 p-8 bg-arena-gray border border-white/5 hover:border-arena-red/30 transition-colors">
+          <div class="w-14 h-14 bg-arena-red/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-arena-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h4 class="font-display text-xl tracking-wider text-white mb-3">ACCESSIBILITÀ</h4>
+          <p class="text-white/50 text-sm leading-relaxed">
+            Ingressi e percorsi dedicati per persone con disabilità, area riservata con posizione esclusiva e servizi igienici dedicati, per una partecipazione comoda e sicura.
+          </p>
         </div>
       </div>
     </div>
