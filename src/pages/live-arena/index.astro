@@ -215,10 +215,11 @@ const displayEvents = upcomingEvents.slice(0, 3);
         <!-- Video 1 -->
         <div class="video-story group relative aspect-[9/16] bg-arena-gray rounded-xl overflow-hidden border-2 border-transparent hover:border-arena-red/50 transition-all duration-300 cursor-pointer">
           <video
-            src="/videos/live-arena-reel/fiorella-mannoia-finale.mp4"
+            src="/videos/live-arena-reel/fiorella-mannoia-finale.mp4#t=0.001"
             class="w-full h-full object-cover"
             preload="metadata"
             playsinline
+            muted
           ></video>
           <div class="play-overlay absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity">
             <div class="w-14 h-14 bg-arena-red/90 rounded-full flex items-center justify-center group-hover:bg-arena-red group-hover:scale-110 transition-all">
@@ -232,10 +233,11 @@ const displayEvents = upcomingEvents.slice(0, 3);
         <!-- Video 2 -->
         <div class="video-story group relative aspect-[9/16] bg-arena-gray rounded-xl overflow-hidden border-2 border-transparent hover:border-arena-red/50 transition-all duration-300 cursor-pointer">
           <video
-            src="/videos/live-arena-reel/coro-live-arena.mp4"
+            src="/videos/live-arena-reel/coro-live-arena.mp4#t=0.001"
             class="w-full h-full object-cover"
             preload="metadata"
             playsinline
+            muted
           ></video>
           <div class="play-overlay absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity">
             <div class="w-14 h-14 bg-arena-red/90 rounded-full flex items-center justify-center group-hover:bg-arena-red group-hover:scale-110 transition-all">
@@ -249,10 +251,11 @@ const displayEvents = upcomingEvents.slice(0, 3);
         <!-- Video 3 -->
         <div class="video-story group relative aspect-[9/16] bg-arena-gray rounded-xl overflow-hidden border-2 border-transparent hover:border-arena-red/50 transition-all duration-300 cursor-pointer">
           <video
-            src="/videos/live-arena-reel/antonello-venditti.mp4"
+            src="/videos/live-arena-reel/antonello-venditti.mp4#t=0.001"
             class="w-full h-full object-cover"
             preload="metadata"
             playsinline
+            muted
           ></video>
           <div class="play-overlay absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity">
             <div class="w-14 h-14 bg-arena-red/90 rounded-full flex items-center justify-center group-hover:bg-arena-red group-hover:scale-110 transition-all">
@@ -266,10 +269,11 @@ const displayEvents = upcomingEvents.slice(0, 3);
         <!-- Video 4 -->
         <div class="video-story group relative aspect-[9/16] bg-arena-gray rounded-xl overflow-hidden border-2 border-transparent hover:border-arena-red/50 transition-all duration-300 cursor-pointer">
           <video
-            src="/videos/live-arena-reel/estate-2024.mp4"
+            src="/videos/live-arena-reel/estate-2024.mp4#t=0.001"
             class="w-full h-full object-cover"
             preload="metadata"
             playsinline
+            muted
           ></video>
           <div class="play-overlay absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity">
             <div class="w-14 h-14 bg-arena-red/90 rounded-full flex items-center justify-center group-hover:bg-arena-red group-hover:scale-110 transition-all">
@@ -283,10 +287,11 @@ const displayEvents = upcomingEvents.slice(0, 3);
         <!-- Video 5 -->
         <div class="video-story group relative aspect-[9/16] bg-arena-gray rounded-xl overflow-hidden border-2 border-transparent hover:border-arena-red/50 transition-all duration-300 cursor-pointer">
           <video
-            src="/videos/live-arena-reel/brunori-sas.mp4"
+            src="/videos/live-arena-reel/brunori-sas.mp4#t=0.001"
             class="w-full h-full object-cover"
             preload="metadata"
             playsinline
+            muted
           ></video>
           <div class="play-overlay absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity">
             <div class="w-14 h-14 bg-arena-red/90 rounded-full flex items-center justify-center group-hover:bg-arena-red group-hover:scale-110 transition-all">
@@ -300,10 +305,11 @@ const displayEvents = upcomingEvents.slice(0, 3);
         <!-- Video 6 -->
         <div class="video-story group relative aspect-[9/16] bg-arena-gray rounded-xl overflow-hidden border-2 border-transparent hover:border-arena-red/50 transition-all duration-300 cursor-pointer">
           <video
-            src="/videos/live-arena-reel/prima-serata.mp4"
+            src="/videos/live-arena-reel/prima-serata.mp4#t=0.001"
             class="w-full h-full object-cover"
             preload="metadata"
             playsinline
+            muted
           ></video>
           <div class="play-overlay absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity">
             <div class="w-14 h-14 bg-arena-red/90 rounded-full flex items-center justify-center group-hover:bg-arena-red group-hover:scale-110 transition-all">
@@ -317,10 +323,11 @@ const displayEvents = upcomingEvents.slice(0, 3);
         <!-- Video 7 -->
         <div class="video-story group relative aspect-[9/16] bg-arena-gray rounded-xl overflow-hidden border-2 border-transparent hover:border-arena-red/50 transition-all duration-300 cursor-pointer">
           <video
-            src="/videos/live-arena-reel/fabri-fibra.mp4"
+            src="/videos/live-arena-reel/fabri-fibra.mp4#t=0.001"
             class="w-full h-full object-cover"
             preload="metadata"
             playsinline
+            muted
           ></video>
           <div class="play-overlay absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity">
             <div class="w-14 h-14 bg-arena-red/90 rounded-full flex items-center justify-center group-hover:bg-arena-red group-hover:scale-110 transition-all">
@@ -482,10 +489,13 @@ const displayEvents = upcomingEvents.slice(0, 3);
           const ov = parent?.querySelector('.play-overlay') as HTMLElement;
           if (vid !== video) {
             vid.pause();
+            vid.muted = true;
             if (ov) ov.style.opacity = '1';
           }
         });
 
+        video.currentTime = 0;
+        video.muted = false;
         video.play();
         overlay.style.opacity = '0';
       } else {
