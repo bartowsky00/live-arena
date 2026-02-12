@@ -102,6 +102,19 @@ const displayEvents = upcomingEvents.slice(0, 3);
           </div>
         </div>
 
+        <!-- Video -->
+        <div class="reveal reveal-delay-2 aspect-[9/16] lg:aspect-auto lg:h-full max-h-[600px] relative overflow-hidden">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            class="w-full h-full object-cover"
+          >
+            <source src="/videos/live-arena-location.mp4" type="video/mp4" />
+          </video>
+          <div class="absolute inset-0 border border-arena-red/20 pointer-events-none"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -456,14 +469,14 @@ const displayEvents = upcomingEvents.slice(0, 3);
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="reveal font-display text-4xl md:text-6xl tracking-wider text-white mb-6">
         SCOPRI ANCHE IL<br />
-        <span class="text-violet-400">PALAFORUM</span>
+        <span class="text-arena-red">PALAFORUM</span>
       </h2>
       <p class="reveal reveal-delay-1 text-white/60 text-lg mb-10 max-w-2xl mx-auto">
         Per eventi al coperto tutto l'anno, scopri il Palaforum Giuseppe Bellavia: acustica eccellente, comfort e versatilità.
       </p>
       <a
         href="/palaforum"
-        class="reveal reveal-delay-2 inline-flex items-center gap-3 px-8 py-4 bg-violet-600 hover:bg-violet-500 text-white font-medium tracking-wider uppercase transition-colors"
+        class="reveal reveal-delay-2 inline-flex items-center gap-3 px-8 py-4 bg-arena-red hover:bg-arena-red-glow text-white font-medium tracking-wider uppercase transition-colors"
       >
         <span>Scopri il Palaforum</span>
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
